@@ -250,8 +250,10 @@ body {
 .plant-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   display: block;
+  padding: 6px;
 }
 
 .plant-emoji {
@@ -445,7 +447,9 @@ body {
 .cart-item-emoji img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
+  padding: 2px;
 }
 
 .cart-item-info {
@@ -613,8 +617,10 @@ body {
 .modal-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   display: block;
+  padding: 8px;
 }
 
 .modal-emoji {

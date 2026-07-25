@@ -167,40 +167,50 @@ let searchQuery = '';
 function renderCatalog() {
   const catalog = document.getElementById('catalog');
   const empty = document.getElementById('emptyState');
+  if (!catalog) return;
 
   const filtered = plants.filter(p => {
-    const matchCat = currentCategory === 'all' || p.category.includes(currentCategory);
+    const matchCat = currentCategory === 'all' || (p.category && p.category.includes(currentCategory));
     const matchSearch = !searchQuery ||
-      p.name.toLowerCase().includes(searchQuery) ||
-      p.short.toLowerCase().includes(searchQuery);
+      (p.name && p.name.toLowerCase().includes(searchQuery)) ||
+      (p.short && p.short.toLowerCase().includes(searchQuery));
     return matchCat && matchSearch;
   });
 
   if (filtered.length === 0) {
     catalog.innerHTML = '';
-    empty.style.display = 'block';
+    if (empty) empty.style.display = 'block';
     return;
   }
 
-  empty.style.display = 'none';
-  catalog.innerHTML = filtered.map(p => `
+  if (empty) empty.style.display = 'none';
+  catalog.innerHTML = filtered.map(p => {
+    const price = Number(p.price).toLocaleString('ru-RU');
+    const badgeClass = (p.category && p.category.includes('rare')) ? 'rare' : '';
+    const badgeHtml = p.badge
+      ? `<span class="plant-badge ${badgeClass}">${p.badge}</span>`
+      : '';
+    const imgHtml = p.image
+      ? `<img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+         <span class="plant-emoji" style="display:none">${p.emoji || '🌿'}</span>`
+      : `<span class="plant-emoji">${p.emoji || '🌿'}</span>`;
+
+    return `
     <div class="plant-card" onclick="openModal(${p.id})">
       <div class="plant-image">
-        ${p.image
-          ? `<img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.outerHTML='<span class=\\'plant-emoji\\'>${p.emoji}</span>'">`
-          : `<span class="plant-emoji">${p.emoji}</span>`}
-        ${p.badge ? `<span class="plant-badge ${p.category.includes('rare') ? 'rare' : ''}">${p.badge}</span>` : ''}
+        ${imgHtml}
+        ${badgeHtml}
       </div>
       <div class="plant-info">
         <div class="plant-name">${p.name}</div>
-        <div class="plant-desc">${p.short}</div>
+        <div class="plant-desc">${p.short || ''}</div>
         <div class="plant-bottom">
-          <div class="plant-price">${p.price.toLocaleString('ru-RU')} ₽</div>
+          <div class="plant-price">${price} ₽</div>
           <button class="add-btn" onclick="event.stopPropagation(); addToCart(${p.id})">+</button>
         </div>
       </div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
 }
 
 function setCategory(cat) {
@@ -363,29 +373,26 @@ function openModal(id) {
   if (!p) return;
 
   const content = document.getElementById('modalContent');
+  const labels = { easy: 'Для новичков', air: 'Очищает воздух', rare: 'Редкая', flowering: 'Цветёт', foliage: 'Декор.-лиственные' };
+  const tags = (p.category || []).map(c => `<span class="tag">${labels[c] || c}</span>`).join('');
+  const care = (p.care || []).map(c => `<li>${c}</li>`).join('');
+  const price = Number(p.price).toLocaleString('ru-RU');
+  const img = p.image
+    ? `<img src="${p.image}" alt="${p.name}" class="modal-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><div class="modal-emoji" style="display:none">${p.emoji || '🌿'}</div>`
+    : `<div class="modal-emoji">${p.emoji || '🌿'}</div>`;
+
   content.innerHTML = `
-    <div class="modal-image-wrap">
-      ${p.image
-        ? `<img src="${p.image}" alt="${p.name}" class="modal-img" onerror="this.outerHTML='<div class=\\'modal-emoji\\'>${p.emoji}</div>'">`
-        : `<div class="modal-emoji">${p.emoji}</div>`}
-    </div>
+    <div class="modal-image-wrap">${img}</div>
     <div class="modal-name">${p.name}</div>
-    <div class="modal-price">${p.price.toLocaleString('ru-RU')} ₽</div>
-    <div class="modal-tags">
-      ${p.category.map(c => {
-        const labels = { easy: 'Для новичков', air: 'Очищает воздух', rare: 'Редкая', flowering: 'Цветёт', foliage: 'Декор.-лиственные' };
-        return `<span class="tag">${labels[c] || c}</span>`;
-      }).join('')}
-    </div>
-    <div class="modal-desc">${p.desc}</div>
+    <div class="modal-price">${price} ₽</div>
+    <div class="modal-tags">${tags}</div>
+    <div class="modal-desc">${p.desc || ''}</div>
     <div class="modal-care">
       <h4>💧 Уход</h4>
-      <ul>
-        ${p.care.map(c => `<li>${c}</li>`).join('')}
-      </ul>
+      <ul>${care}</ul>
     </div>
     <button class="modal-add" onclick="addToCart(${p.id}); closeModal();">
-      Добавить в корзину · ${p.price.toLocaleString('ru-RU')} ₽
+      Добавить в корзину · ${price} ₽
     </button>
   `;
 
@@ -399,5 +406,21 @@ function closeModal() {
 }
 
 // ===== Init =====
-renderCatalog();
-updateCartUI();
+function init() {
+  try {
+    renderCatalog();
+    updateCartUI();
+  } catch (e) {
+    console.error('BLOOM init error:', e);
+    const catalog = document.getElementById('catalog');
+    if (catalog) {
+      catalog.innerHTML = '<p style="padding:20px;text-align:center;">Ошибка загрузки каталога. Обновите страницу.</p>';
+    }
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
