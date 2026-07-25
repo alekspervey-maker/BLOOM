@@ -22,6 +22,7 @@ const plants = [
     id: 1,
     name: 'Монстера деликатесная',
     emoji: '🌿',
+    image: 'images/monstera.jpg',   // ← путь к фото (положи файл в папку images/)
     price: 1890,
     category: ['air', 'easy'],
     badge: 'Хит',
@@ -45,18 +46,18 @@ const plants = [
     name: 'Мирт обыкновенный',
     emoji: '🌳',
     price: 980,
-    category: ['easy'],
+    category: ['easy', 'flowering'],
     badge: null,
     short: 'Ароматный средиземноморский куст',
-    desc: 'Вечнозелёный кустарник с ароматными листьями. Символ мира и удачи. Хорошо поддаётся формировке.',
+    desc: 'Вечнозелёный кустарник с ароматными листьями и белыми цветами. Символ мира и удачи. Хорошо поддаётся формировке.',
     care: ['Свет: яркий', 'Полив: регулярный', 'Влажность: средняя', 'Любит прохладную зимовку']
   },
   {
     id: 4,
-    name: 'Сансевиерия «Лаurentii»',
-    emoji: '🌵',
+    name: 'Сансевиерия «Laurentii»',
+    emoji: '🪴',
     price: 890,
-    category: ['easy', 'succulent', 'air'],
+    category: ['easy', 'air'],
     badge: 'Для новичков',
     short: 'Тёщин язык — почти неубиваемая',
     desc: 'Одна из самых выносливых растений. Очищает воздух даже ночью. Идеальна для офиса и новичков.',
@@ -78,10 +79,10 @@ const plants = [
     name: 'Замиокулькас',
     emoji: '💚',
     price: 1290,
-    category: ['easy', 'succulent'],
+    category: ['easy'],
     badge: 'Для новичков',
     short: 'Долларовое дерево',
-    desc: 'Неприхотливый суккулент с глянцевыми листьями. Отлично переносит редкий полив и недостаток света.',
+    desc: 'Неприхотливое растение с глянцевыми листьями. Отлично переносит редкий полив и недостаток света.',
     care: ['Свет: полутень', 'Полив: редкий', 'Влажность: низкая', 'Почти невозможно убить']
   },
   {
@@ -97,24 +98,24 @@ const plants = [
   },
   {
     id: 8,
-    name: 'Хавортия cooperi',
-    emoji: '💎',
-    price: 650,
-    category: ['succulent', 'easy'],
-    badge: null,
-    short: 'Мини-суккулент «хрустальный»',
-    desc: 'Компактный суккулент с прозрачными «окошками» на листьях. Идеален для подоконника и коллекций.',
-    care: ['Свет: яркий', 'Полив: редкий', 'Влажность: низкая', 'Любит солнце']
+    name: 'Антуриум «Red Champion»',
+    emoji: '🌺',
+    price: 1690,
+    category: ['flowering', 'air'],
+    badge: 'Цветёт',
+    short: 'Ярко-красные «сердечки»',
+    desc: 'Эффектное цветущее растение с глянцевыми красными покрывалами. Цветёт почти круглый год при хорошем уходе.',
+    care: ['Свет: яркий рассеянный', 'Полив: регулярный', 'Влажность: высокая', 'Любит тепло']
   },
   {
     id: 9,
     name: 'Спатифиллум «Sensation»',
     emoji: '🤍',
     price: 1590,
-    category: ['air', 'easy'],
-    badge: 'Очищает воздух',
+    category: ['flowering', 'air', 'easy'],
+    badge: 'Цветёт',
     short: 'Женское счастье крупное',
-    desc: 'Крупный сорт с большими листьями и белыми покрывалами. Активно очищает воздух.',
+    desc: 'Крупный сорт с большими листьями и белыми покрывалами. Цветёт и активно очищает воздух.',
     care: ['Свет: полутень', 'Полив: регулярный', 'Влажность: высокая', 'Любит влажный воздух']
   },
   {
@@ -130,14 +131,14 @@ const plants = [
   },
   {
     id: 11,
-    name: 'Эхеверия «Perle von Nürnberg»',
-    emoji: '🌸',
-    price: 490,
-    category: ['succulent', 'easy'],
-    badge: null,
-    short: 'Розовая каменная роза',
-    desc: 'Нежный суккулент с розово-сиреневыми листьями. Компактный и очень красивый.',
-    care: ['Свет: яркий', 'Полив: редкий', 'Влажность: низкая', 'Отличный дренаж']
+    name: 'Орхидея Фаленопсис',
+    emoji: '🦋',
+    price: 1290,
+    category: ['flowering', 'easy'],
+    badge: 'Цветёт',
+    short: 'Классика на подоконнике',
+    desc: 'Неприхотливая орхидея с длительным цветением. Цветки держатся до 2–3 месяцев. Идеальна для начинающих.',
+    care: ['Свет: яркий рассеянный', 'Полив: раз в 7–10 дней', 'Влажность: средняя', 'Не заливать точку роста']
   },
   {
     id: 12,
@@ -180,7 +181,9 @@ function renderCatalog() {
   catalog.innerHTML = filtered.map(p => `
     <div class="plant-card" onclick="openModal(${p.id})">
       <div class="plant-image">
-        ${p.emoji}
+        ${p.image
+          ? `<img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.outerHTML='<span class=\\'plant-emoji\\'>${p.emoji}</span>'">`
+          : `<span class="plant-emoji">${p.emoji}</span>`}
         ${p.badge ? `<span class="plant-badge ${p.category.includes('rare') ? 'rare' : ''}">${p.badge}</span>` : ''}
       </div>
       <div class="plant-info">
@@ -280,7 +283,11 @@ function renderCartItems() {
     if (!p) return '';
     return `
       <div class="cart-item">
-        <div class="cart-item-emoji">${p.emoji}</div>
+        <div class="cart-item-emoji">
+          ${p.image
+            ? `<img src="${p.image}" alt="${p.name}" onerror="this.outerHTML='${p.emoji}'">`
+            : p.emoji}
+        </div>
         <div class="cart-item-info">
           <div class="cart-item-name">${p.name}</div>
           <div class="cart-item-price">${p.price.toLocaleString('ru-RU')} ₽</div>
@@ -352,12 +359,16 @@ function openModal(id) {
 
   const content = document.getElementById('modalContent');
   content.innerHTML = `
-    <div class="modal-emoji">${p.emoji}</div>
+    <div class="modal-image-wrap">
+      ${p.image
+        ? `<img src="${p.image}" alt="${p.name}" class="modal-img" onerror="this.outerHTML='<div class=\\'modal-emoji\\'>${p.emoji}</div>'">`
+        : `<div class="modal-emoji">${p.emoji}</div>`}
+    </div>
     <div class="modal-name">${p.name}</div>
     <div class="modal-price">${p.price.toLocaleString('ru-RU')} ₽</div>
     <div class="modal-tags">
       ${p.category.map(c => {
-        const labels = { easy: 'Для новичков', air: 'Очищает воздух', rare: 'Редкая', succulent: 'Суккулент' };
+        const labels = { easy: 'Для новичков', air: 'Очищает воздух', rare: 'Редкая', flowering: 'Цветёт' };
         return `<span class="tag">${labels[c] || c}</span>`;
       }).join('')}
     </div>

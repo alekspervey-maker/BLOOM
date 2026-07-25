@@ -67,15 +67,31 @@ https://t.me/ИМЯ_БОТА/ИМЯ_APP
 {
   id: 13,
   name: 'Название',
-  emoji: '🌿',
+  emoji: '🌿',                    // запасной вариант
+  image: 'images/nazvanie.jpg',  // путь к фото или URL
   price: 1500,
-  category: ['easy', 'air'], // easy | air | rare | succulent
-  badge: 'Хит',              // или null
+  category: ['easy', 'air'],     // easy | air | rare | flowering
+  badge: 'Хит',                  // или null
   short: 'Короткое описание',
   desc: 'Полное описание',
   care: ['Свет: ...', 'Полив: ...']
 }
 ```
+
+### Как добавить реальные фото
+
+1. Создай папку `images/` рядом с `index.html`
+2. Положи туда фото (JPG/PNG, лучше квадрат 600–800 px)
+3. В растении укажи:
+   ```js
+   image: 'images/monstera.jpg'
+   ```
+4. Можно использовать прямую ссылку с интернета:
+   ```js
+   image: 'https://example.com/photo.jpg'
+   ```
+
+Если фото не найдено — автоматически покажется эмодзи.
 
 ### Контакт менеджера
 
@@ -92,6 +108,9 @@ bloom-miniapp/
 ├── index.html    — разметка
 ├── styles.css    — стили
 ├── app.js        — логика + данные
+├── images/       — папка с фото растений
+│   ├── monstera.jpg
+│   └── ...
 └── README.md     — эта инструкция
 ```
 

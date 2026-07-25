@@ -237,13 +237,26 @@ body {
 }
 
 .plant-image {
-  height: 130px;
+  height: 140px;
   background: linear-gradient(145deg, #d8f3dc, #b7e4c7);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 56px;
   position: relative;
+  overflow: hidden;
+}
+
+.plant-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.plant-emoji {
+  font-size: 56px;
+  line-height: 1;
 }
 
 .plant-badge {
@@ -256,6 +269,7 @@ body {
   font-weight: 600;
   padding: 3px 8px;
   border-radius: 8px;
+  z-index: 2;
 }
 
 .plant-badge.rare {
@@ -416,8 +430,22 @@ body {
 
 .cart-item-emoji {
   font-size: 36px;
-  width: 48px;
+  width: 52px;
+  height: 52px;
   text-align: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #d8f3dc, #b7e4c7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-item-emoji img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .cart-item-info {
@@ -570,10 +598,29 @@ body {
   padding: 24px 20px;
 }
 
+.modal-image-wrap {
+  width: 100%;
+  height: 220px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  background: linear-gradient(145deg, #d8f3dc, #b7e4c7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .modal-emoji {
   font-size: 72px;
   text-align: center;
-  margin-bottom: 12px;
+  line-height: 1;
 }
 
 .modal-name {
