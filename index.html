@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>BLOOM — Магазин растений</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">BLOOM</div>
+      <div class="subtitle">Магазин живых растений · Красноярск</div>
+    </header>
+
+    <!-- Search -->
+    <div class="search-box">
+      <input type="text" id="search" placeholder="Найти растение..." oninput="filterPlants()">
+    </div>
+
+    <!-- Categories -->
+    <div class="categories" id="categories">
+      <button class="cat active" data-cat="all" onclick="filterCategory('all')">Все</button>
+      <button class="cat" data-cat="easy" onclick="filterCategory('easy')">Для новичков</button>
+      <button class="cat" data-cat="air" onclick="filterCategory('air')">Очищают воздух</button>
+      <button class="cat" data-cat="rare" onclick="filterCategory('rare')">Редкие</button>
+    </div>
+
+    <!-- Plants grid -->
+    <div class="plants" id="plants"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Минимальный заказ от 1500 ₽</p>
+      <button class="btn-manager" onclick="openManager()">Написать менеджеру</button>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
