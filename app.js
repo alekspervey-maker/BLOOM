@@ -94,7 +94,7 @@ const plants = [
     id: 7,
     name: 'Монстера «Альба»',
     emoji: '🌴',
-    image: 'images/7.jpg'
+    image: 'images/7.jpg',
     price: 1600,
     category: ['rare', 'foliage'],
     badge: 'Новинка',
@@ -106,7 +106,7 @@ const plants = [
     id: 8,
     name: 'Монстера «Альба»',
     emoji: '🌴',
-    image: 'images/8.jpg'
+    image: 'images/8.jpg',
     price: 800,
     category: ['rare', 'foliage'],
     badge: 'Новинка',
@@ -118,7 +118,7 @@ const plants = [
     id: 9,
     name: 'Монстера «Альба»',
     emoji: '🌴',
-    image: 'images/9.jpg'
+    image: 'images/9.jpg',
     price: 1200,
     category: ['rare', 'foliage'],
     badge: 'Новинка',
@@ -161,7 +161,48 @@ const plants = [
     short: 'Крупные листья, будто освещённые изнутри.',
     desc: 'Свежая, яркая и очень декоративная — сразу наполняет пространство тропическим светом.',
     care: ['Свет: яркий рассеянный или лёгкая полутень', 'Полив: регулярный, после лёгкого просыхания верхнего слоя', 'Влажность: средняя-высокая', 'Температура: 18–26 °C']
-  }
+  },
+  // ===== Пустые карточки для редактирования (id 13–52) =====
+  { id: 13, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 14, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 15, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 16, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 17, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 18, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 19, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 20, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 21, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 22, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 23, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 24, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 25, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 26, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 27, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 28, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 29, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 30, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 31, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 32, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 33, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 34, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 35, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 36, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 37, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 38, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 39, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 40, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 41, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 42, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 43, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 44, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 45, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 46, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 47, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 48, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 49, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 50, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 51, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 52, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] }
 ];
 
 // ===== State =====
@@ -176,6 +217,7 @@ function renderCatalog() {
   if (!catalog) return;
 
   const filtered = plants.filter(p => {
+    if (!p.name || !p.name.trim()) return false; // скрываем пустые карточки
     const matchCat = currentCategory === 'all' || (p.category && p.category.includes(currentCategory));
     const matchSearch = !searchQuery ||
       (p.name && p.name.toLowerCase().includes(searchQuery)) ||
