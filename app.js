@@ -197,7 +197,7 @@ function renderCatalog() {
 
     return `
     <div class="plant-card" onclick="openModal(${p.id})">
-      <div class="plant-image">
+      <div class="plant-image" ${p.image ? `onclick="event.stopPropagation(); openZoom('${p.image}')"` : ''}>
         ${imgHtml}
         ${badgeHtml}
       </div>
@@ -378,11 +378,11 @@ function openModal(id) {
   const care = (p.care || []).map(c => `<li>${c}</li>`).join('');
   const price = Number(p.price).toLocaleString('ru-RU');
   const img = p.image
-    ? `<img src="${p.image}" alt="${p.name}" class="modal-img" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><div class="modal-emoji" style="display:none">${p.emoji || '🌿'}</div>`
+    ? `<img src="${p.image}" alt="${p.name}" class="modal-img" onclick="event.stopPropagation(); openZoom('${p.image}')" onerror="this.style.display='none';this.nextElementSibling.style.display='block';"><div class="modal-emoji" style="display:none">${p.emoji || '🌿'}</div>`
     : `<div class="modal-emoji">${p.emoji || '🌿'}</div>`;
 
   content.innerHTML = `
-    <div class="modal-image-wrap">${img}</div>
+    <div class="modal-image-wrap" ${p.image ? `onclick="openZoom('${p.image}')"` : ''}>${img}</div>
     <div class="modal-name">${p.name}</div>
     <div class="modal-price">${price} ₽</div>
     <div class="modal-tags">${tags}</div>
@@ -403,6 +403,178 @@ function openModal(id) {
 function closeModal() {
   document.getElementById('modalOverlay').classList.remove('open');
   document.getElementById('plantModal').classList.remove('open');
+}
+
+// ===== Image Zoom (pinch + pan) =====
+let zoomScale = 1;
+let zoomX = 0;
+let zoomY = 0;
+let lastTap = 0;
+let pointers = new Map();
+let lastDist = 0;
+let lastMid = { x: 0, y: 0 };
+let isPanning = false;
+
+function openZoom(src) {
+  if (!src) return;
+  const viewer = document.getElementById('zoomViewer');
+  const img = document.getElementById('zoomImg');
+  if (!viewer || !img) return;
+
+  img.src = src;
+  zoomScale = 1;
+  zoomX = 0;
+  zoomY = 0;
+  applyZoomTransform();
+  viewer.classList.add('open');
+
+  const stage = document.getElementById('zoomStage');
+  stage.ontouchstart = onZoomTouchStart;
+  stage.ontouchmove = onZoomTouchMove;
+  stage.ontouchend = onZoomTouchEnd;
+  stage.ontouchcancel = onZoomTouchEnd;
+  stage.onwheel = onZoomWheel;
+}
+
+function closeZoom(e) {
+  if (e) {
+    e.stopPropagation();
+    // Close only on button or backdrop (not while interacting with image)
+    const t = e.target;
+    if (t && t.id !== 'zoomViewer' && !t.classList.contains('zoom-close')) {
+      return;
+    }
+  }
+  const viewer = document.getElementById('zoomViewer');
+  if (viewer) viewer.classList.remove('open');
+  zoomScale = 1;
+  zoomX = 0;
+  zoomY = 0;
+  pointers.clear();
+  window._lastPan = null;
+}
+
+function applyZoomTransform() {
+  const img = document.getElementById('zoomImg');
+  if (!img) return;
+  img.style.transform = `translate(${zoomX}px, ${zoomY}px) scale(${zoomScale})`;
+}
+
+function getDistance(a, b) {
+  const dx = a.clientX - b.clientX;
+  const dy = a.clientY - b.clientY;
+  return Math.hypot(dx, dy);
+}
+
+function getMidpoint(a, b) {
+  return {
+    x: (a.clientX + b.clientX) / 2,
+    y: (a.clientY + b.clientY) / 2
+  };
+}
+
+function onZoomTouchStart(e) {
+  e.preventDefault();
+  for (const t of e.changedTouches) {
+    pointers.set(t.identifier, t);
+  }
+
+  // Double-tap zoom
+  if (e.touches.length === 1) {
+    const now = Date.now();
+    if (now - lastTap < 300) {
+      if (zoomScale > 1.2) {
+        zoomScale = 1;
+        zoomX = 0;
+        zoomY = 0;
+      } else {
+        zoomScale = 2.5;
+      }
+      applyZoomTransform();
+      lastTap = 0;
+    } else {
+      lastTap = now;
+    }
+  }
+
+  if (pointers.size === 2) {
+    const pts = [...pointers.values()];
+    lastDist = getDistance(pts[0], pts[1]);
+    lastMid = getMidpoint(pts[0], pts[1]);
+  }
+  isPanning = pointers.size === 1;
+}
+
+function onZoomTouchMove(e) {
+  e.preventDefault();
+  for (const t of e.changedTouches) {
+    pointers.set(t.identifier, t);
+  }
+
+  if (pointers.size === 2) {
+    const pts = [...pointers.values()];
+    const dist = getDistance(pts[0], pts[1]);
+    const mid = getMidpoint(pts[0], pts[1]);
+
+    if (lastDist > 0) {
+      const factor = dist / lastDist;
+      const newScale = Math.min(5, Math.max(1, zoomScale * factor));
+
+      // Zoom towards midpoint
+      const dx = mid.x - lastMid.x;
+      const dy = mid.y - lastMid.y;
+      zoomX += dx;
+      zoomY += dy;
+      zoomScale = newScale;
+      applyZoomTransform();
+    }
+    lastDist = dist;
+    lastMid = mid;
+    isPanning = false;
+  } else if (pointers.size === 1 && zoomScale > 1) {
+    const t = e.changedTouches[0];
+    const prev = pointers.get(t.identifier);
+    // use movement from previous frame stored on touch — approximate via changedTouches
+    // Better: track last single point
+    if (window._lastPan) {
+      zoomX += t.clientX - window._lastPan.x;
+      zoomY += t.clientY - window._lastPan.y;
+      applyZoomTransform();
+    }
+    window._lastPan = { x: t.clientX, y: t.clientY };
+  }
+}
+
+function onZoomTouchEnd(e) {
+  for (const t of e.changedTouches) {
+    pointers.delete(t.identifier);
+  }
+  if (pointers.size < 2) lastDist = 0;
+  if (pointers.size === 0) {
+    window._lastPan = null;
+    // Soft reset if almost default
+    if (zoomScale < 1.05) {
+      zoomScale = 1;
+      zoomX = 0;
+      zoomY = 0;
+      applyZoomTransform();
+    }
+  }
+  if (pointers.size === 1) {
+    const t = [...pointers.values()][0];
+    window._lastPan = { x: t.clientX, y: t.clientY };
+  }
+}
+
+function onZoomWheel(e) {
+  e.preventDefault();
+  const delta = e.deltaY > 0 ? 0.9 : 1.1;
+  zoomScale = Math.min(5, Math.max(1, zoomScale * delta));
+  if (zoomScale === 1) {
+    zoomX = 0;
+    zoomY = 0;
+  }
+  applyZoomTransform();
 }
 
 // ===== Init =====

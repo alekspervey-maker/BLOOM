@@ -92,6 +92,15 @@
       <div class="modal-content" id="modalContent"></div>
     </div>
 
+    <!-- Image zoom viewer (pinch / drag) -->
+    <div class="zoom-viewer" id="zoomViewer" onclick="closeZoom(event)">
+      <button class="zoom-close" onclick="closeZoom(event)">✕</button>
+      <div class="zoom-stage" id="zoomStage">
+        <img id="zoomImg" src="" alt="" draggable="false" />
+      </div>
+      <div class="zoom-hint">Сведите/разведите пальцы · перетащите</div>
+    </div>
+
     <!-- Bottom navigation / CTA -->
     <footer class="footer">
       <div class="footer-delivery">
