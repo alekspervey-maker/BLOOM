@@ -1,40 +1,108 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>BLOOM — Магазин растений</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>BLOOM | Каталог растений</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <div class="app">
+  <div id="app">
     <!-- Header -->
     <header class="header">
-      <div class="logo">BLOOM</div>
-      <div class="subtitle">Магазин живых растений · Красноярск</div>
+      <div class="header-top">
+        <div class="logo">
+          <span class="logo-icon">🪴</span>
+          <div>
+            <div class="logo-title">BLOOM</div>
+            <div class="logo-subtitle">Красноярск → вся Россия</div>
+          </div>
+        </div>
+        <button class="cart-btn" id="cartBtn" onclick="toggleCart()">
+          <span>🛒</span>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+
+      <!-- Delivery banner -->
+      <div class="delivery-banner">
+        <div class="delivery-icon">🚚</div>
+        <div class="delivery-text">
+          <strong>Доставка по всей России</strong>
+          <span>Бережная упаковка · От 1500 ₽</span>
+        </div>
+      </div>
     </header>
 
-    <!-- Search -->
-    <div class="search-box">
-      <input type="text" id="search" placeholder="Найти растение..." oninput="filterPlants()">
-    </div>
-
-    <!-- Categories -->
-    <div class="categories" id="categories">
-      <button class="cat active" data-cat="all" onclick="filterCategory('all')">Все</button>
-      <button class="cat" data-cat="easy" onclick="filterCategory('easy')">Для новичков</button>
-      <button class="cat" data-cat="air" onclick="filterCategory('air')">Очищают воздух</button>
-      <button class="cat" data-cat="rare" onclick="filterCategory('rare')">Редкие</button>
-    </div>
+    <!-- Search & Filters -->
+    <section class="filters">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Найти растение..." oninput="filterPlants()" />
+        <span class="search-icon">🔍</span>
+      </div>
+      <div class="categories" id="categories">
+        <button class="cat-btn active" data-cat="all" onclick="setCategory('all')">Все</button>
+        <button class="cat-btn" data-cat="easy" onclick="setCategory('easy')">Для новичков</button>
+        <button class="cat-btn" data-cat="air" onclick="setCategory('air')">Очищают воздух</button>
+        <button class="cat-btn" data-cat="rare" onclick="setCategory('rare')">Редкие</button>
+        <button class="cat-btn" data-cat="succulent" onclick="setCategory('succulent')">Суккуленты</button>
+      </div>
+    </section>
 
     <!-- Plants grid -->
-    <div class="plants" id="plants"></div>
+    <main class="catalog" id="catalog"></main>
 
-    <!-- Footer -->
+    <!-- Empty state -->
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <div class="empty-icon">🌿</div>
+      <p>Ничего не найдено</p>
+      <button onclick="resetFilters()">Сбросить фильтры</button>
+    </div>
+
+    <!-- Cart panel -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-panel" id="cartPanel">
+      <div class="cart-header">
+        <h2>Корзина</h2>
+        <button class="close-btn" onclick="toggleCart()">✕</button>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Итого:</span>
+          <strong id="cartTotal">0 ₽</strong>
+        </div>
+        <div class="min-order-note" id="minOrderNote">Минимальный заказ — 1500 ₽</div>
+        <button class="order-btn" id="orderBtn" onclick="placeOrder()" disabled>
+          Оформить заказ
+        </button>
+        <p class="order-hint">Вы перейдёте в чат с менеджером</p>
+      </div>
+    </div>
+
+    <!-- Plant detail modal -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
+    <div class="modal" id="plantModal">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+
+    <!-- Bottom navigation / CTA -->
     <footer class="footer">
-      <p>Минимальный заказ от 1500 ₽</p>
-      <button class="btn-manager" onclick="openManager()">Написать менеджеру</button>
+      <div class="footer-delivery">
+        <span>📦</span>
+        <div>
+          <strong>Доставка по всей России</strong>
+          <small>СДЭК · Почта России · Яндекс</small>
+        </div>
+      </div>
+      <a href="https://t.me/olga_bloom24" class="footer-btn" target="_blank">
+        Написать менеджеру
+      </a>
     </footer>
   </div>
 
