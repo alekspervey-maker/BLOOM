@@ -69,7 +69,7 @@ const plants = [
     name: "Алоказия Полли",
     price: 2450,
     emoji: "🌴",
-    image: "images/alocasia.jpg",
+    image: "images/foto1.jpg",
     tags: ["Эффектное"],
     category: ["rare"],
     desc: "Яркий свет, умеренный полив"
