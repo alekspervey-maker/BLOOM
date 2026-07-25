@@ -70,7 +70,7 @@ https://t.me/ИМЯ_БОТА/ИМЯ_APP
   emoji: '🌿',                    // запасной вариант
   image: 'images/nazvanie.jpg',  // путь к фото или URL
   price: 1500,
-  category: ['easy', 'air'],     // easy | air | rare | flowering
+  category: ['easy', 'air'],     // easy | air | rare | flowering | foliage
   badge: 'Хит',                  // или null
   short: 'Короткое описание',
   desc: 'Полное описание',
