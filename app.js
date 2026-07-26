@@ -163,16 +163,124 @@ const plants = [
     care: ['Свет: яркий рассеянный или лёгкая полутень', 'Полив: регулярный, после лёгкого просыхания верхнего слоя', 'Влажность: средняя-высокая', 'Температура: 18–26 °C']
   },
   // ===== Пустые карточки для редактирования (id 13–52) =====
-  { id: 13, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
-  { id: 14, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
-  { id: 15, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
-  { id: 16, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
-  { id: 17, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
-  { id: 18, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
-  { id: 19, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
-  { id: 20, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
-  { id: 21, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
-  { id: 22, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { id: 13,
+    name: 'Аглаонема «Клеопатра»',
+    emoji: '🌿',
+    image: 'images/14.jpg',
+    price: 450, 
+    category: ['easy', 'foliage', 'air'],
+    badge: null,
+    short: 'Элегантные листья с серебристо-зелёной серединой и глубокой изумрудной каймой.',
+    desc: 'Спокойная, благородная и очень декоративная — создаёт ощущение уюта и свежести.', 
+    care: ['Свет: полутень или яркий рассеянный', 'Полив: умеренный, после лёгкого просыхания верхнего слоя', 'Влажность: средняя', 'Температура: 18–25 °C'] 
+  },
+  { 
+    id: 14,
+    name: 'Аглаонема «Клеопатра»',
+    emoji: '🌿',
+    image: 'images/15.jpg',
+    price: 450, 
+    category: ['easy', 'foliage', 'air'],
+    badge: null,
+    short: 'Элегантные листья с серебристо-зелёной серединой и глубокой изумрудной каймой.',
+    desc: 'Спокойная, благородная и очень декоративная — создаёт ощущение уюта и свежести.', 
+    care: ['Свет: полутень или яркий рассеянный', 'Полив: умеренный, после лёгкого просыхания верхнего слоя', 'Влажность: средняя', 'Температура: 18–25 °C'] 
+  },
+  { 
+    id: 15,
+    name: 'Аглаонема «Клеопатра»',
+    emoji: '🌿',
+    image: 'images/16.jpg',
+    price: 450, 
+    category: ['easy', 'foliage', 'air'],
+    badge: null,
+    short: 'Элегантные листья с серебристо-зелёной серединой и глубокой изумрудной каймой.',
+    desc: 'Спокойная, благородная и очень декоративная — создаёт ощущение уюта и свежести.', 
+    care: ['Свет: полутень или яркий рассеянный', 'Полив: умеренный, после лёгкого просыхания верхнего слоя', 'Влажность: средняя', 'Температура: 18–25 °C'] 
+  },
+  { 
+    id: 16, 
+    name: 'Монстера «Делициоза»', 
+    emoji: '🌿', 
+    image: 'images/17.jpg', 
+    price: 800,
+    category: ['easy', 'foliage', 'air'], 
+    badge: null, 
+    short: 'Крупные глянцевые листья с изящными прорезями — будто тропический лес поселился дома.', 
+    desc: 'Растёт уверенно, создаёт атмосферу свежести и уюта. Классика, которая никогда не выходит из моды.', 
+    care: ['Свет: яркий рассеянный', 'Полив: умеренный, после просыхания верхнего слоя', 'Влажность: 50–70 %', 'Температура: 18–27 °C'] 
+  },
+  { 
+    id: 17,
+    name: 'Монстера «Делициоза»', 
+    emoji: '🌿', 
+    image: 'images/18.jpg', 
+    price: 800,
+    category: ['easy', 'foliage', 'air'], 
+    badge: null, 
+    short: 'Крупные глянцевые листья с изящными прорезями — будто тропический лес поселился дома.', 
+    desc: 'Растёт уверенно, создаёт атмосферу свежести и уюта. Классика, которая никогда не выходит из моды.', 
+    care: ['Свет: яркий рассеянный', 'Полив: умеренный, после просыхания верхнего слоя', 'Влажность: 50–70 %', 'Температура: 18–27 °C'] 
+  },
+  { 
+    id: 18, 
+    name: 'Монстера «Делициоза»', 
+    emoji: '🌿', 
+    image: 'images/19.jpg', 
+    price: 550,
+    category: ['easy', 'foliage', 'air'], 
+    badge: null, 
+    short: 'Крупные глянцевые листья с изящными прорезями — будто тропический лес поселился дома.', 
+    desc: 'Растёт уверенно, создаёт атмосферу свежести и уюта. Классика, которая никогда не выходит из моды.', 
+    care: ['Свет: яркий рассеянный', 'Полив: умеренный, после просыхания верхнего слоя', 'Влажность: 50–70 %', 'Температура: 18–27 °C']
+  },
+  {
+    id: 19, 
+    name: 'Спатифиллум «Даймонд»', 
+    emoji: '🌿', 
+    image: 'images/20.jpg',
+    price: 1000, 
+    category: ['flowering', 'foliage', 'air'],
+    badge: null, 
+    short: 'Тёмно-зелёные листья, будто припорошенные белым инеем, и изящные белоснежные покрывала.', 
+    desc: 'Нежный, свежий и очень выразительный — настоящее украшение интерьера и символ гармонии.', 
+    care: ['Свет: полутень или яркий рассеянный', 'Полив: регулярный, почва должна быть слегка влажной', 'Влажность: высокая', 'Температура: 18–25 °C'] 
+  },
+  { 
+    id: 20, 
+    name: 'Спатифиллум «Даймонд»', 
+    emoji: '🌿',
+    image: 'images/diamond.jpg', 
+    price: 3200,
+    category: ['flowering', 'foliage', 'air'],
+    badge: null, 
+    short: 'Тёмно-зелёные листья, будто припорошенные белым инеем, и изящные белоснежные покрывала.', 
+    desc: 'Нежный, свежий и очень выразительный — настоящее украшение интерьера и символ гармонии.', 
+    care: ['Свет: полутень или яркий рассеянный', 'Полив: регулярный, почва должна быть слегка влажной', 'Влажность: высокая', 'Температура: 18–25 °C'] 
+  },
+  { 
+    id: 21,
+    name: 'Алоказия «Амазоника»',
+    emoji: '🌿',
+    image: 'images/Amaz.jpg',
+    price: 1300,
+    category: ['foliage', 'rare'], 
+    badge: null, 
+    short: 'Тёмные, почти чёрно-зелёные листья с волнистым краем и яркими серебристыми прожилками — будто тропическая графика.', 
+    desc: 'Эффектная, графичная и очень стильная — сразу становится акцентом в интерьере.', 
+    care: ['Свет: яркий рассеянный', 'Полив: регулярный', 'Влажность: 60-80%', 'Температура: 20–27 °C'] 
+  },
+  { 
+    id: 22,
+    name: '', 
+    emoji: '🌿',
+    image: '', 
+    price: 0, 
+    category: [], 
+    badge: null, 
+    short: '',
+    desc: '', 
+    care: [] },
   { id: 23, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
   { id: 24, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
   { id: 25, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
@@ -209,6 +317,22 @@ const plants = [
 let cart = {};
 let currentCategory = 'all';
 let searchQuery = '';
+
+// ===== Extra service (cart only) =====
+const SOIL = {
+  id: 'soil',
+  name: 'Грунт для пересадки',
+  emoji: '🪴',
+  price: 499
+};
+
+function addSoil() {
+  cart['soil'] = (cart['soil'] || 0) + 1;
+  updateCartUI();
+  renderCartItems();
+  if (tg?.HapticFeedback) tg.HapticFeedback.impactOccurred('light');
+}
+
 
 // ===== Render =====
 function renderCatalog() {
@@ -304,6 +428,7 @@ function changeQty(id, delta) {
 function updateCartUI() {
   const count = Object.values(cart).reduce((a, b) => a + b, 0);
   const total = Object.entries(cart).reduce((sum, [id, qty]) => {
+    if (id === 'soil') return sum + SOIL.price * qty;
     const plant = plants.find(p => p.id === +id);
     return sum + (plant ? plant.price * qty : 0);
   }, 0);
@@ -342,6 +467,21 @@ function renderCartItems() {
   }
 
   container.innerHTML = entries.map(([id, qty]) => {
+    if (id === 'soil') {
+      return `
+      <div class="cart-item">
+        <div class="cart-item-emoji">${SOIL.emoji}</div>
+        <div class="cart-item-info">
+          <div class="cart-item-name">${SOIL.name}</div>
+          <div class="cart-item-price">${SOIL.price.toLocaleString('ru-RU')} ₽</div>
+        </div>
+        <div class="cart-item-controls">
+          <button class="qty-btn" onclick="changeQty('soil', -1)">−</button>
+          <span class="qty-value">${qty}</span>
+          <button class="qty-btn" onclick="changeQty('soil', 1)">+</button>
+        </div>
+      </div>`;
+    }
     const p = plants.find(pl => pl.id === +id);
     if (!p) return '';
     return `
@@ -382,11 +522,16 @@ function toggleCart() {
 
 function placeOrder() {
   const items = Object.entries(cart).map(([id, qty]) => {
+    if (id === 'soil') {
+      return `• ${SOIL.name} × ${qty} = ${(SOIL.price * qty).toLocaleString('ru-RU')} ₽`;
+    }
     const p = plants.find(pl => pl.id === +id);
+    if (!p) return '';
     return `• ${p.name} × ${qty} = ${(p.price * qty).toLocaleString('ru-RU')} ₽`;
-  }).join('\n');
+  }).filter(Boolean).join('\n');
 
   const total = Object.entries(cart).reduce((sum, [id, qty]) => {
+    if (id === 'soil') return sum + SOIL.price * qty;
     const plant = plants.find(p => p.id === +id);
     return sum + (plant ? plant.price * qty : 0);
   }, 0);
