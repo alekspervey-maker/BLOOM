@@ -263,7 +263,7 @@ const plants = [
     name: 'Алоказия «Амазоника»',
     emoji: '🌿',
     image: 'images/Amaz.jpg',
-    price: 1300,
+    price: 1800,
     category: ['foliage', 'rare'], 
     badge: null, 
     short: 'Тёмные, почти чёрно-зелёные листья с волнистым краем и яркими серебристыми прожилками — будто тропическая графика.', 
