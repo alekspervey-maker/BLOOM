@@ -517,6 +517,38 @@ body {
 }
 body.tg-dark .soil-btn { background: #1a2e24; border-color: var(--primary-light); }
 
+.pot-btn {
+  opacity: 0.7;
+  cursor: not-allowed;
+  border-style: solid;
+  border-color: #c5d9cc;
+  background: #f5f7f5;
+  margin-bottom: 14px;
+}
+.pot-btn:active { background: #f5f7f5; }
+.pot-btn .soil-btn-text strong { color: var(--text-secondary); }
+.pot-btn .soil-btn-text small { color: #9b5de5; font-weight: 600; }
+.pot-btn .pot-soon {
+  background: #e9ecef;
+  color: #6c757d;
+  font-size: 14px;
+}
+.pot-icon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+body.tg-dark .pot-btn {
+  background: #252527;
+  border-color: #3a3a3c;
+}
+body.tg-dark .pot-btn .pot-soon {
+  background: #3a3a3c;
+  color: #98989f;
+}
+
 .cart-footer {
   padding: 16px 20px 20px;
   border-top: 1px solid var(--border);
