@@ -353,6 +353,12 @@ function addSoil() {
   cart['soil'] = (cart['soil'] || 0) + 1;
   updateCartUI();
   renderCartItems();
+  const badge = document.getElementById('cartCount');
+  if (badge) {
+    badge.classList.remove('bump');
+    void badge.offsetWidth;
+    badge.classList.add('bump');
+  }
   if (tg?.HapticFeedback) tg.HapticFeedback.impactOccurred('light');
 }
 
@@ -435,6 +441,13 @@ function resetFilters() {
 function addToCart(id) {
   cart[id] = (cart[id] || 0) + 1;
   updateCartUI();
+  // Cart badge bump animation
+  const badge = document.getElementById('cartCount');
+  if (badge) {
+    badge.classList.remove('bump');
+    void badge.offsetWidth;
+    badge.classList.add('bump');
+  }
   // Haptic feedback
   if (tg?.HapticFeedback) {
     tg.HapticFeedback.impactOccurred('light');
