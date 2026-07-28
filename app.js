@@ -306,19 +306,198 @@ const plants = [
     desc: 'Эффектное растение с крупными листьями в камуфляжной расцветке — тёмно-зелёный фон с хаотичными светлыми пятнами.', 
     care: ['Свет: яркий рассеянный', 'Полив: после подсыхания верхнего слоя грунта', 'Влажность: средняя, любит опрыскивание', 'Температура: 18–26 °C'] 
   },
-  { id: 25, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
-  { id: 26, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
-  { id: 27, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
-  { id: 28, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
-  { id: 29, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
-  { id: 30, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
-  { id: 31, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
-  { id: 32, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
-  { id: 33, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
-  { id: 34, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
-  { id: 35, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
-  { id: 36, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
-  { id: 37, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
+  { 
+    id: 25,
+    name: 'Алоказия «Фрайдек»', 
+    emoji: '🌿', 
+    image: 'images/Freydek.png',
+    price: 650, 
+    category: ['foliage', 'rare'], 
+    badge: null, 
+    short: 'Изящная тропическая красавица.', 
+    desc: 'Растение словно хранит в себе частичку влажных джунглей и привносит в интерьер нотку экзотической элегантности.',
+    care: ['Свет: яркий рассеянный', 'Полив: умеренный, поддерживайте почву слегка влажной', 'Влажность: 60–80 %', 'Температура: 18–25°C'] 
+  },
+  { 
+    id: 26, 
+    name: 'Диффенбахия «Рефлектор»', 
+    emoji: '🌿', 
+    image: 'images/reflector.png', 
+    price: 1200,
+    category: ['easy', 'foliage', 'air'],
+    badge: null, 
+    short: 'Крупные листья с серебристым отливом, будто отражающим свет',
+    desc: 'Эффектная и свежая: тёмно-зелёный фон пересекают светлые серебристо-кремовые разводы. Смотрится ярко и современно — сразу наполняет комнату ощущением тропической зелени.', 
+    care: ['Свет: яркий рассеянный или лёгкая полутень',
+    'Полив: умеренный, после просыхания верхнего слоя',
+    'Влажность: средняя–высокая',
+    'Температура: 18–26 °C'] 
+  },
+  { 
+    id: 27,
+    name: 'Диффенбахия «Вайт Этна»',
+    emoji: '🌿',
+    image: 'images/vayt_etna.png', 
+    price: 3800, 
+    category: ['easy', 'foliage', 'air'], 
+    badge: null, 
+    short: 'Светлые листья с нежными кремово-белыми разводами.', 
+    desc: 'Мягкая и элегантная: крупные листья будто припорошены белым снегом. Светлая вариегатность создаёт ощущение лёгкости и свежести — идеальный акцент для светлого интерьера.', 
+    care: ['Свет: яркий рассеянный (белые участки чувствительны к прямому солнцу)',
+    'Полив: умеренный, после просыхания верхнего слоя',
+    'Влажность: средняя–высокая',
+    'Температура: 18–26 °C'] 
+  },
+  { 
+    id: 28,
+    name: 'Алоказия «Фрайдек»',
+    emoji: '🌿',
+    image: 'images/freydec.png', 
+    price: 1600, 
+    category: ['foliage', 'rare'], 
+    badge: null, 
+    short: 'Бархатистые тёмно-зелёные листья с яркими белыми прожилками.', 
+    desc: 'Изящная тропическая красавица: глубокий изумрудный цвет и контрастные светлые жилки создают эффект бархатной графики. Смотрится благородно и экзотично — сразу становится акцентом в интерьере.', 
+    care: ['Свет: яркий рассеянный',
+    'Полив: умеренный, почва слегка влажная',
+    'Влажность: 60–80 %',
+    'Температура: 18–25 °C'] 
+  },
+  { 
+    id: 29,
+    name: 'Мирт крупнолистный',
+    emoji: '🌿',
+    image: 'images/mirt_krupno.png', 
+    price: 1300,
+    category: ['foliage', 'air', 'easy'], 
+    badge: null, 
+    short: 'Плотные глянцевые листья с тонким свежим ароматом.', 
+    desc: 'Классика с характером: густая крона из блестящих листьев наполняет дом лёгким пряным ароматом. Выглядит аккуратно и благородно — идеально и как деревце, и как компактный зелёный акцент.',
+    care: ['Свет: яркий, можно лёгкое солнце',
+    'Полив: регулярный, не допускайте пересыхания',
+    'Влажность: средняя–высокая, любит опрыскивание',
+    'Температура: 16–24 °C'] 
+  },
+  { 
+    id: 30, 
+    name: 'Филодендрон «Грин Принцесс»', 
+    emoji: '🌿', 
+    image: 'images/grin_princ.png',
+    price: 300, 
+    category: ['easy', 'foliage', 'air'], 
+    badge: null, 
+    short: 'Компактный и яркий, с насыщенно-зелёными глянцевыми листьями.', 
+    desc: 'Неприхотливый и очень декоративный: плотные листья глубокого зелёного цвета создают ощущение свежести и порядка. Идеален для тех, кто хочет красивое растение без лишних хлопот.', 
+    care: ['Свет: яркий рассеянный или лёгкая полутень',
+    'Полив: умеренный, после просыхания верхнего слоя',
+    'Влажность: средняя',
+    'Температура: 18–26 °C'] 
+  },
+  { 
+    id: 31, 
+    name: 'Филодендрон «Розовая королева»', 
+    emoji: '🌿', 
+    image: 'images/roz_cor.png',
+    price: 1100, 
+    category: ['rare', 'foliage'], 
+    badge: null, 
+    short: 'Тёмные листья с яркими розовыми всполохами.',
+    desc: 'Настоящая королева коллекции: глубокий почти чёрно-зелёный фон пересекают нежные розовые разводы. Каждый лист получается уникальным — эффектно, стильно и очень выразительно.', 
+    care: ['Свет: яркий рассеянный (для сохранения розового цвета)',
+    'Полив: умеренный, после просыхания верхнего слоя',
+    'Влажность: 60 %+',
+    'Температура: 18–27 °C'] 
+  },
+  { 
+    id: 32, 
+    name: 'Филодендрон «Сильвер Квин»', 
+    emoji: '🌿',
+    image: 'images/silver_qin.png',
+    price: 500, 
+    category: ['easy', 'foliage', 'air'], 
+    badge: null, 
+    short: 'Серебристо-зелёные листья с мягким металлическим отливом.', 
+    desc: 'Элегантный и спокойный: светлые серебристые разводы на зелёном фоне создают ощущение прохлады и свежести. Неприхотливый, но очень декоративный — отлично смотрится в современном интерьере.', 
+    care: ['Свет: яркий рассеянный или лёгкая полутень',
+    'Полив: умеренный, после просыхания верхнего слоя',
+    'Влажность: средняя',
+    'Температура: 18–26 °C'] 
+  },
+  { 
+    id: 33, 
+    name: 'Диффенбахия «Индонезия»',
+    emoji: '🌿',
+    image: 'images/indonesia.png',
+    price: 900, 
+    category: ['easy', 'foliage', 'air'], 
+    badge: null, 
+    short: 'Крупные листья с ярким контрастом тёмного и светлого.', 
+    desc: 'Тропическая и выразительная: насыщенный зелёный фон пересекают светлые кремово-жёлтые разводы. Смотрится сочно и живо — сразу добавляет в комнату ощущение джунглей.', 
+    care: ['Свет: яркий рассеянный или лёгкая полутень',
+    'Полив: умеренный, после просыхания верхнего слоя',
+    'Влажность: средняя–высокая',
+    'Температура: 18–26 °C'] 
+  },
+  { 
+    id: 34,
+    name: 'Циссус «Эллен Даника»', 
+    emoji: '🌿',
+    image: 'images/elen_danika.png',
+    price: 2300,
+    category: ['easy', 'foliage', 'air'],
+    badge: 'Хит',
+    short: 'Ажурные листья-«виноградные», лёгкая ампельная форма.',
+    desc: 'Изящный «виноградный плющ»: резные пальчатые листья создают воздушную зелёную каскадную крону. Неприхотливый и очень декоративный — идеален для подвесных кашпо и полок.',
+    care: ['Свет: яркий рассеянный или полутень',
+    'Полив: умеренный, после лёгкого просыхания',
+    'Влажность: средняя, любит опрыскивание',
+    'Температура: 16–24 °C']
+   },
+   { 
+    id: 35,
+    name: 'Монстера «Тайское созвездие»',
+    emoji: '🌿',
+    image: 'images/Sozvezdie.png',
+    price: 6000,
+    category: ['rare', 'foliage'],
+    badge: 'Хит',
+    short: 'Тёмные листья, будто присыпанные звёздной пылью.',
+    desc: 'Редкая и завораживающая: кремовые крапинки и пятна разбросаны по глубокому зелёному фону, как созвездия на ночном небе. Каждый лист уникален — настоящее живое произведение искусства.',
+    care: ['Свет: яркий рассеянный',
+    'Полив: умеренный, после просыхания верхнего слоя',
+    'Влажность: 60–75 %',
+    'Температура: 18–27 °C'] 
+  },
+  { 
+    id: 36, 
+    name: 'Диффенбахия «Зебра вариегатная»', 
+    emoji: '🌿', 
+    image: 'images/zebra.png', 
+    price: 8500, 
+    category: ['easy', 'foliage', 'air'], 
+    badge: null, 
+    short: 'Контрастные полосы, будто нарисованные кистью зебры.', 
+    desc: 'Яркая и графичная: тёмно-зелёный фон пересекают светлые кремово-белые полосы и разводы. Смотрится стильно и современно — сразу привлекает внимание и оживляет интерьер.', 
+    care: ['Свет: яркий рассеянный или лёгкая полутень',
+    'Полив: умеренный, после просыхания верхнего слоя',
+    'Влажность: средняя–высокая',
+    'Температура: 18–26 °C'] 
+  },
+  { 
+    id: 37, 
+    name: 'Диффенбахия «Шкура дракона»', 
+    emoji: '🌿',
+    image: 'images/drakon.png', 
+    price: 800,
+    category: ['foliage', 'rare'],
+    badge: null,
+    short: 'Текстурные листья с узором, напоминающим шкуру дракона.',
+    desc: 'Эффектная и необычная: плотные листья покрыты сложным пятнистым рисунком — тёмные и светлые участки создают ощущение чешуи. Смотрится мощно и экзотично, сразу становится акцентом коллекции.',
+    care: ['Свет: яркий рассеянный или лёгкая полутень',
+    'Полив: умеренный, после просыхания верхнего слоя',
+    'Влажность: средняя–высокая',
+    'Температура: 18–26 °C'] 
+  },
   { id: 38, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
   { id: 39, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
   { id: 40, name: '', emoji: '🌿', image: '', price: 0, category: [], badge: null, short: '', desc: '', care: [] },
@@ -339,6 +518,7 @@ const plants = [
 // ===== State =====
 let cart = {};
 let currentCategory = 'all';
+let currentPriceFilter = 'all';
 let searchQuery = '';
 
 // ===== Extra service (cart only) =====
@@ -353,12 +533,6 @@ function addSoil() {
   cart['soil'] = (cart['soil'] || 0) + 1;
   updateCartUI();
   renderCartItems();
-  const badge = document.getElementById('cartCount');
-  if (badge) {
-    badge.classList.remove('bump');
-    void badge.offsetWidth;
-    badge.classList.add('bump');
-  }
   if (tg?.HapticFeedback) tg.HapticFeedback.impactOccurred('light');
 }
 
@@ -375,7 +549,8 @@ function renderCatalog() {
     const matchSearch = !searchQuery ||
       (p.name && p.name.toLowerCase().includes(searchQuery)) ||
       (p.short && p.short.toLowerCase().includes(searchQuery));
-    return matchCat && matchSearch;
+    const matchPrice = matchPriceFilter(p.price);
+    return matchCat && matchSearch && matchPrice;
   });
 
   if (filtered.length === 0) {
@@ -414,10 +589,29 @@ function renderCatalog() {
   }).join('');
 }
 
+function matchPriceFilter(price) {
+  const p = Number(price) || 0;
+  switch (currentPriceFilter) {
+    case '0-1000': return p < 1000;
+    case '1000-3000': return p >= 1000 && p < 3000;
+    case '3000-10000': return p >= 3000 && p < 10000;
+    case '10000+': return p >= 10000;
+    default: return true;
+  }
+}
+
 function setCategory(cat) {
   currentCategory = cat;
-  document.querySelectorAll('.cat-btn').forEach(btn => {
+  document.querySelectorAll('#categories .cat-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.cat === cat);
+  });
+  renderCatalog();
+}
+
+function setPriceFilter(range) {
+  currentPriceFilter = range;
+  document.querySelectorAll('#priceFilters .cat-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.price === range);
   });
   renderCatalog();
 }
@@ -429,10 +623,14 @@ function filterPlants() {
 
 function resetFilters() {
   currentCategory = 'all';
+  currentPriceFilter = 'all';
   searchQuery = '';
   document.getElementById('searchInput').value = '';
-  document.querySelectorAll('.cat-btn').forEach(btn => {
+  document.querySelectorAll('#categories .cat-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.cat === 'all');
+  });
+  document.querySelectorAll('#priceFilters .cat-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.price === 'all');
   });
   renderCatalog();
 }
@@ -441,13 +639,6 @@ function resetFilters() {
 function addToCart(id) {
   cart[id] = (cart[id] || 0) + 1;
   updateCartUI();
-  // Cart badge bump animation
-  const badge = document.getElementById('cartCount');
-  if (badge) {
-    badge.classList.remove('bump');
-    void badge.offsetWidth;
-    badge.classList.add('bump');
-  }
   // Haptic feedback
   if (tg?.HapticFeedback) {
     tg.HapticFeedback.impactOccurred('light');
@@ -455,10 +646,45 @@ function addToCart(id) {
 }
 
 function changeQty(id, delta) {
-  cart[id] = (cart[id] || 0) + delta;
-  if (cart[id] <= 0) delete cart[id];
+  const next = (cart[id] || 0) + delta;
+  if (next <= 0) {
+    const el = document.querySelector(`.cart-item[data-id="${id}"]`);
+    if (el) {
+      el.classList.add('removing');
+      setTimeout(() => {
+        delete cart[id];
+        updateCartUI();
+        renderCartItems();
+      }, 280);
+      if (tg?.HapticFeedback) tg.HapticFeedback.impactOccurred('light');
+      return;
+    }
+    delete cart[id];
+  } else {
+    cart[id] = next;
+  }
   updateCartUI();
   renderCartItems();
+}
+
+function clearCart() {
+  const items = document.querySelectorAll('.cart-item');
+  if (items.length === 0) {
+    cart = {};
+    updateCartUI();
+    renderCartItems();
+    return;
+  }
+  items.forEach((el, i) => {
+    setTimeout(() => el.classList.add('removing'), i * 50);
+  });
+  const delay = items.length * 50 + 280;
+  setTimeout(() => {
+    cart = {};
+    updateCartUI();
+    renderCartItems();
+  }, delay);
+  if (tg?.HapticFeedback) tg.HapticFeedback.impactOccurred('medium');
 }
 
 function updateCartUI() {
@@ -471,6 +697,9 @@ function updateCartUI() {
 
   document.getElementById('cartCount').textContent = count;
   document.getElementById('cartTotal').textContent = total.toLocaleString('ru-RU') + ' ₽';
+
+  const clearBtn = document.getElementById('clearCartBtn');
+  if (clearBtn) clearBtn.style.display = count > 0 ? 'block' : 'none';
 
   const note = document.getElementById('minOrderNote');
   const btn = document.getElementById('orderBtn');
@@ -505,7 +734,7 @@ function renderCartItems() {
   container.innerHTML = entries.map(([id, qty]) => {
     if (id === 'soil') {
       return `
-      <div class="cart-item">
+      <div class="cart-item" data-id="soil">
         <div class="cart-item-emoji">${SOIL.emoji}</div>
         <div class="cart-item-info">
           <div class="cart-item-name">${SOIL.name}</div>
@@ -521,7 +750,7 @@ function renderCartItems() {
     const p = plants.find(pl => pl.id === +id);
     if (!p) return '';
     return `
-      <div class="cart-item">
+      <div class="cart-item" data-id="${p.id}">
         <div class="cart-item-emoji">
           ${p.image
             ? `<img src="${p.image}" alt="${p.name}" onerror="this.outerHTML='${p.emoji}'">`
